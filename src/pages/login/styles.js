@@ -4,7 +4,6 @@ import styled from "styled-components"
 export const Container = styled.div`
 
 display: flex;
-align-itens:center;
 justify-content:center;
 text-align:center;
 height:100vh;
@@ -13,9 +12,9 @@ flex-direction: column;
 header{
 
     width:100vw;
-    min-heigth: 50px;
+    min-height: 50px;
     text-align: center;
-    margin-bottom:50px;
+    
 }
 img{
     width: 144.06px;

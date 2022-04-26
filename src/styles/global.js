@@ -10,16 +10,13 @@ const GlobalStyle = createGlobalStyle`
 }
 
 :root {
-
-    --black: #000;
+    --background: #121214;
     --box: #212529;
-    
     --white:#F8F9FA;
-
 }
 
 body{
-    background-color: var(--black);
+    background-color: var(--background);
     color: var(--white);
 }
 body,input,button,label,h1,h2,h3,h4,h5,h6,p{

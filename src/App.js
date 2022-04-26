@@ -4,7 +4,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import GlobalStyle from "./styles/global";
 import Routes from "./routes";
-import Login from "./pages/login";
+import Cadastro from "./pages/cadastro/index";
 
 function App() {
   // axios.get("https://kenziehub.herokuapp.com").then((response) => {
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <GlobalStyle/>
       <Routes/>
-      <Login/>
+      <Cadastro/>
       <h1>Ronaldo</h1>
     </div>
   );
