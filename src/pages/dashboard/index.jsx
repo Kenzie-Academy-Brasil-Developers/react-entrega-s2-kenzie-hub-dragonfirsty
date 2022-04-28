@@ -7,17 +7,18 @@ import { Redirect } from "react-router-dom";
 import ModalModificar from "../../components/modalModificar";
 import Api from "../../services/api";
 
-const Dashboard = ({ authenticated, userId, token }) => {
+const Dashboard = ({ authenticated, userId, token, setAuthenticated}) => {
   const history = useHistory();
 
 
   
   const signout = () => {
     window.localStorage.clear();
-
-    history.push("/");
+    setAuthenticated(false)
+   return history.push("/");
   };
 
+  
 
   const [tech, setTech] = useState([]);
   const [username, setUsername] = useState("");
@@ -26,6 +27,7 @@ const Dashboard = ({ authenticated, userId, token }) => {
   const [modalChange, setModalChange] = useState(false);
   const [modalChangeLi, setModalChangeLi] = useState({});
 
+  
   const loadTech = () => {
     Api.get(`/users/${userId}`)
       .then((info) => {
@@ -37,14 +39,27 @@ const Dashboard = ({ authenticated, userId, token }) => {
   };
 
   useEffect(() => {
+    if (authenticated === false) {
+      return <Redirect to="/" />;
+    }else{
     loadTech();
-  }, []);
+    }
+  }, [displayModal]);
 
-  // if (authenticated === false) {
-  //   return <Redirect to="/" />;
-  // }
+  useEffect(() => {
+    if (authenticated === false) {
+      return <Redirect to="/" />;
+    }else{
+    loadTech();
+    }
+  }, [modalChange]);
 
-  const snorlax = (evt, tecnology) => {
+  if (authenticated === false) {
+    return <Redirect to="/" />;
+  }
+
+
+  const dataLi = (evt, tecnology) => {
     setModalChange(true);
     setModalChangeLi(tecnology);
   };
@@ -79,7 +94,7 @@ const Dashboard = ({ authenticated, userId, token }) => {
                 <li
                   key={tecnology.id}
                   onClick={() => {
-                    snorlax("evt", tecnology);
+                    dataLi("evt", tecnology);
                   }}
                 >
                   <p className="Title-tech">{tecnology.title}</p>

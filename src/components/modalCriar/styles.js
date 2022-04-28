@@ -31,6 +31,7 @@ export const Container = styled.div`
     padding: 12px 20px;
     background: #343b41;
     border-radius: 4px 4px 0px 0px;
+    margin: 0px 0px 0px 0px;
   }
 
   .content header h3 {

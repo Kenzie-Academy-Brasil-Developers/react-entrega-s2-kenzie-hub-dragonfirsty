@@ -26,7 +26,7 @@ const Routes = () => {
         <Cadastro authenticated={authenticated} />
       </Route>
       <Route exatch path={"/Dashboard"}>
-        <Dashboard authenticated={authenticated} userId={userId} token={token}/>
+        <Dashboard authenticated={authenticated} userId={userId} token={token} setAuthenticated={setAuthenticated}/>
       </Route>
       <Route exatch path={"/"}>
         <Login authenticated={authenticated} setAuthenticated={setAuthenticated} />
