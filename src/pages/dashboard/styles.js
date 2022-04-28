@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  
   display: flex;
-  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
- 
 
   .navbar {
     width: 100vw;
@@ -51,6 +49,7 @@ export const Container = styled.div`
     flex-direction: column;
     border-top: solid 1px #212529;
     border-bottom: solid 1px #212529;
+    margin: 100px 0 20px 0;
   }
 
   header h1 {
@@ -80,6 +79,8 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
   }
 
   .tecnologys p {

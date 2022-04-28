@@ -8,15 +8,17 @@ import { useState } from "react";
 const Routes = () => {
   const [authenticated,setAuthenticated] = useState(false);
   
-
+  const token = JSON.parse(localStorage.getItem("authToken"));
+  const userId = JSON.parse(localStorage.getItem("userId")); 
+  
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("authToken"));
     
     if (token) {
-      return setAuthenticated(true);
+      setAuthenticated(true);
     }
-  }, []);
+
+  }, [authenticated]);
 
   return (
     <Switch>
@@ -24,7 +26,7 @@ const Routes = () => {
         <Cadastro authenticated={authenticated} />
       </Route>
       <Route exatch path={"/Dashboard"}>
-        <Dashboard authenticated={authenticated} />
+        <Dashboard authenticated={authenticated} userId={userId} token={token}/>
       </Route>
       <Route exatch path={"/"}>
         <Login authenticated={authenticated} setAuthenticated={setAuthenticated} />

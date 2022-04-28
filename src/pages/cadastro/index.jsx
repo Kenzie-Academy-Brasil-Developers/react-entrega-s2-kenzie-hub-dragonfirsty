@@ -29,7 +29,7 @@ const Cadastro = ({authenticated}) => {
       .required("Senha obrigatoria")
       .matches(
         /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        "E necessario  ter pelo menos 8 caracteres,1 letra maiuscula e uma minuscula,um ccaractere especial e um numero"
+        "E necessario  ter pelo menos 8 caracteres,1 letra maiuscula e uma minuscula,um caractere especial e um numero"
       ),
     confirmPassword: yup
       .string()

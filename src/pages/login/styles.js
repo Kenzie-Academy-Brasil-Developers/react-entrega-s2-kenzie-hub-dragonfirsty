@@ -9,6 +9,13 @@ text-align:center;
 height:100vh;
 flex-direction: column;
 
+.box{
+
+    min-height:362px;
+    max-height:362px;
+}
+
+
 header{
 
     width:100vw;
@@ -34,7 +41,7 @@ form{
 
     width:100%;
     max-height:250px;
-
+   
 }
 
 label{
@@ -80,7 +87,7 @@ input{
     line-height: 26px;
     color: #FFFFFF;
     width:75%;
-    margin: 0 auto;    
+    margin: 10px auto;    
 }
 .Div-cadastro{
 
@@ -94,7 +101,6 @@ p{
     font-size: 12px;
     line-height: 18px;
     color: #868E96;
-    margin-bottom:10px;
 }
 .cadastro-btn{
     display: flex;

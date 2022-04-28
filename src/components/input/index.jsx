@@ -8,7 +8,7 @@ const Input = ({label,error,register,name, ...rest}) =>{
                 {label}
             </div>
             <input {...register(name)}  {...rest} />
-            <p>{!!error && <span>{error}</span>}</p>
+            {!!error && <p className="error">{error}</p>}
         </Container>
     )
 

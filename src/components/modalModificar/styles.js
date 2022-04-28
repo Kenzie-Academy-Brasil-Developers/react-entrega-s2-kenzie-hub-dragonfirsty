@@ -15,7 +15,7 @@ export const Container = styled.div`
 
   .content {
     border-radius: 10px;
-    width: 40vw;
+    width: 80%;
     min-height: 40vh;
     background-color: #212529;
     box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);

@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
 body{
     background-color: var(--background);
     color: var(--white);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 body,input,button,label,h1,h2,h3,h4,h5,h6,p{
 
@@ -33,9 +35,8 @@ button{
     background-color: var(--box);
     display: flex;
     flex-direction:column;
-    min-height:60vh;
     margin:0 auto;
-    height:50vh;
+    height:60vh;
     width: 80vw;
     max-width:300px;
     box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);

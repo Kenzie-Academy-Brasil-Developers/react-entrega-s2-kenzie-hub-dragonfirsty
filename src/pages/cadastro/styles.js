@@ -34,6 +34,8 @@ export const Container = styled.div`
     width: 100%;
     min-height: 350px;
     overflow: scroll;
+    /* overflow-x: hidden;
+    overflow-y: hidden; */
   }
 
   select {

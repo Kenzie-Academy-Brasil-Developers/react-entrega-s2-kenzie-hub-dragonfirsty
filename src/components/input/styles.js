@@ -44,16 +44,16 @@ export const Container = styled.div`
    
   }
 
-  p{
+  .error{
 
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 9.73988px;
     color: #f08080;
-    width: 90%;
-    margin: 10px auto;
-
+    width: 100%;
+    margin:0 auto;
+    text-align:center;
   }
 
 `;

@@ -7,10 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Api from "../../services/api";
 import { toast } from "react-toastify";
 
-const ModalModificar = ({ close,tecnology }) => {
+const ModalModificar = ({ close,tech}) => {
   const [token, setToken] = useState("");
-  console.log(tecnology)
- 
+  
+    
 
   const {
     register,
@@ -28,20 +28,25 @@ const ModalModificar = ({ close,tecnology }) => {
   const onSubmitFunction = ({  status }) => {
     const tecnology = {  status };
 
-  //   const config = {
+  Api
+  .put(`/users/techs/${tech.id}`,tecnology,{headers : {Authorization: `Bearer ${token}`}})
+  .then((_) => {
 
-  //       headers : {Authorization: `Bearer${token}`}
-  //   }
-
-  //   Api
-  //   .post("/users/techs",tecnology,config.headers)
-  //   .then((_) => {
-
-  //     toast.success('Sucesso ao criar tecnologia')
-  //     close(false)
-  //   })
-  //   .catch((err) => toast.error("Nome invalido"))
+    close(false)
+  })
+  .catch((err) => toast.error("status invalido"))
   };
+  const deletetech = () => {
+
+    Api
+  .delete(`/users/techs/${tech.id}`,{headers : {Authorization: `Bearer ${token}`}})
+  .then((_) => {
+
+    close(false)
+  })
+  .catch((err) => toast.error("Erro, a tecnologia ja foi excluida"))
+  
+  }
  
   return (
     <Container>
@@ -54,7 +59,7 @@ const ModalModificar = ({ close,tecnology }) => {
           
           <div>
             <h3>Nome do projeto</h3>
-            <p>{tecnology.title}</p>
+            <p>{tech.title}</p>
           </div>
 
       <div>
@@ -72,7 +77,7 @@ const ModalModificar = ({ close,tecnology }) => {
       </div>
           <div className="btns">
           <button type="submit" className="change-status">Salvar alterações</button>
-          <button type="submit" className="delete-tecnology">Excluir</button>
+          <h4 onClick={()=> deletetech()} className="delete-tecnology">Excluir</h4>
           </div>
         
         

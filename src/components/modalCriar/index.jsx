@@ -38,11 +38,11 @@ const ModalCriar = ({ close }) => {
 
     const config = {
 
-        headers : {Authorization: `Bearer${token}`}
+        headers : {Authorization: `Bearer ${token}`}
     }
 
     Api
-    .post("/users/techs",tecnology,config.headers)
+    .post("/users/techs",tecnology,config)
     .then((_) => {
 
       toast.success('Sucesso ao criar tecnologia')
@@ -64,7 +64,7 @@ const ModalCriar = ({ close }) => {
             label="Nome do projeto"
             placeholder="Digite aqui o nome da tecnologia"
             register={register}
-            error={errors.name?.message}
+            error={errors.title?.message}
           />
           <select
             name="status"

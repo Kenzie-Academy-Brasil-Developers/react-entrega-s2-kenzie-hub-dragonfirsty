@@ -48,7 +48,8 @@ const Login = ({authenticated,setAuthenticated}) => {
         toast.success("Sucesso ao logar");
         setAuthenticated(true)
         window.localStorage.setItem("authToken",JSON.stringify(info.data.token))
-        window.localStorage.setItem("user",JSON.stringify(info.data.user) )
+        window.localStorage.setItem("userId",JSON.stringify(info.data.user.id) )
+        
        return signIn()
       })
       .catch((err) => toast.error("erro ao logar verifique seus dados"));

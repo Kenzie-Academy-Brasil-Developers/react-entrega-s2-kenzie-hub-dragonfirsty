@@ -5,42 +5,50 @@ import { useEffect, useState } from "react";
 import ModalCriar from "../../components/modalCriar";
 import { Redirect } from "react-router-dom";
 import ModalModificar from "../../components/modalModificar";
+import Api from "../../services/api";
 
-const Dashboard = ({ authenticated }) => {
+const Dashboard = ({ authenticated, userId, token }) => {
   const history = useHistory();
 
+
+  
   const signout = () => {
     window.localStorage.clear();
 
     history.push("/");
   };
-  const [user, setUser] = useState({});
-  const [username, setUsername] = useState("ronaldo");
+
+
+  const [tech, setTech] = useState([]);
+  const [username, setUsername] = useState("");
   const [module, setModule] = useState("");
   const [displayModal, setDisplayModal] = useState(false);
-  const [modalChange,setModalChange] = useState(false)
-  const [modalChangeLi,setModalChangeLi] = useState({})
+  const [modalChange, setModalChange] = useState(false);
+  const [modalChangeLi, setModalChangeLi] = useState({});
+
+  const loadTech = () => {
+    Api.get(`/users/${userId}`)
+      .then((info) => {
+        setTech(info.data.techs);
+        setUsername(info.data.name);
+        setModule(info.data.course_module);
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
-    const pikachu = localStorage.getItem("user");
-    const raichu = JSON.parse(pikachu);
-    setUser(raichu);
-    setUsername(raichu.name);
-    setModule(raichu.course_module);
-}, []);
+    loadTech();
+  }, []);
 
-//   if (authenticated === false) {
-    //     return <Redirect to="/" />;
-    //   }
+  // if (authenticated === false) {
+  //   return <Redirect to="/" />;
+  // }
 
-    const snorlax = (evt,tecnology) =>{
-        
-        setModalChange(true) 
-        setModalChangeLi(tecnology)
+  const snorlax = (evt, tecnology) => {
+    setModalChange(true);
+    setModalChangeLi(tecnology);
+  };
 
-    }
-    
-    
   return (
     <Container>
       <NavBar btn={signout} />
@@ -60,17 +68,24 @@ const Dashboard = ({ authenticated }) => {
             +
           </button>
         </div>
-          {displayModal ? <ModalCriar close={setDisplayModal} /> : null}
-          {modalChange ? <ModalModificar close={setModalChange} tecnology={modalChangeLi}/> : null}
+        {displayModal ? <ModalCriar close={setDisplayModal} /> : null}
+        {modalChange ? (
+          <ModalModificar close={setModalChange} tech={modalChangeLi}/>
+        ) : null}
         <div className="box">
           <ul>
-            
-           {username !== "ronaldo" ? user.techs.map((tecnology) => (
-        <li key={tecnology.id} onClick={() =>{snorlax("evt",tecnology)} }>
-            <p className="Title-tech">{tecnology.title}</p>
-            <p className="Level">{tecnology.status}</p>
-        </li>
-      )) : null } 
+            {username !== "" &&
+              tech.map((tecnology) => (
+                <li
+                  key={tecnology.id}
+                  onClick={() => {
+                    snorlax("evt", tecnology);
+                  }}
+                >
+                  <p className="Title-tech">{tecnology.title}</p>
+                  <p className="Level">{tecnology.status}</p>
+                </li>
+              ))}
           </ul>
         </div>
       </main>
