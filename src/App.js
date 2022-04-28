@@ -1,22 +1,28 @@
 import "./App.css";
-import axios from "axios";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import GlobalStyle from "./styles/global";
 import Routes from "./routes";
-import Cadastro from "./pages/cadastro/index";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  // axios.get("https://kenziehub.herokuapp.com").then((response) => {
-  //   console.log(response);
-  // });
 
+  
   return (
     <div className="App">
-      <GlobalStyle/>
-      <Routes/>
-      <Cadastro/>
-      <h1>Ronaldo</h1>
+      <GlobalStyle />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Routes />
     </div>
   );
 }
